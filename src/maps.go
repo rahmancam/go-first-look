@@ -27,7 +27,7 @@ func main() {
 
 	fifthEmail, ok := usrMails[5]
 	fmt.Println(fifthEmail, ok)
-
+ 
 	if _, ok := usrMails[5]; ok {
 		fmt.Println("email exisits")
 	} else {

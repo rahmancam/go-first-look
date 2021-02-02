@@ -31,7 +31,7 @@ func describeUser(u User) string {
 	return desc
 }
 
-func describeGroup(g Group) string {
+func describeGroup(g *Group) string {
 
 	if len(g.users) > 2 {
 		g.spaceAvailable = false
@@ -58,7 +58,7 @@ func main() {
 	fmt.Println(describeUser(usr))
 	fmt.Println(describeUser(usr2))
 
-	fmt.Println(describeGroup(g))
+	fmt.Println(describeGroup(&g))
 	fmt.Println(usr)
 	fmt.Println(usr2)
 	fmt.Println(g)
