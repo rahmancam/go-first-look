@@ -25,6 +25,18 @@ type Group struct {
 	spaceAvailable bool
 }
 
+// Person type
+type Person struct {
+	fname string
+	lname string
+}
+
+// SecretAgent type
+type SecretAgent struct {
+	Person
+	LicenseToKill bool
+}
+
 func describeUser(u User) string {
 	u.FirstName = u.FirstName + "xxxx"
 	desc := fmt.Sprintf("Name: %s %s, Email: %s", u.FirstName, u.LastName, u.Email)
@@ -39,6 +51,10 @@ func describeGroup(g *Group) string {
 
 	desc := fmt.Sprintf("This user group has %d. The newest user is %s %s. Accepting New Users: %t", len(g.users), g.newstUser.FirstName, g.newstUser.LastName, g.spaceAvailable)
 	return desc
+}
+
+func (sa SecretAgent) speak() {
+	fmt.Println(sa.fname, sa.lname, sa.LicenseToKill)
 }
 
 func main() {
@@ -62,4 +78,13 @@ func main() {
 	fmt.Println(usr)
 	fmt.Println(usr2)
 	fmt.Println(g)
+
+	sa := SecretAgent{
+		Person{
+			fname: "Abdul",
+			lname: "Rahman",
+		},
+		false,
+	}
+	sa.speak()
 }
